@@ -2,6 +2,13 @@
 # Parms   fullFieldName
 #
 # Notes   Used when constructing ExecuteSQL calls in order to pass the FIELD names
+# 
+# Example
+#	SQL = Substitute ( SQLraw ;
+#		[ "~tableA" ; cf_SQLTableName ( MyTable::ID )];
+#		[ "~id" ; cf_SQLFieldName ( MyTable::ID )] ;
+#		)
+
 
 
 Quote ( GetValue ( Substitute ( GetFieldName ( fullFieldName ) ; "::" ; "¶" ) ; 2 ) )

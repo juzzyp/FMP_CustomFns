@@ -1,0 +1,35 @@
+# Title  	nextValueInList
+# Parms  	possiblevalues
+#			currentvalues
+#
+# Notes   When you want to move sequentially through a list of values. 
+#
+# Example 
+
+
+Let ( [
+
+	//starting char position of the current value
+	_c = Position ( possiblevalues ; currentvalue ; 1; 1 ) ;
+
+	_allbefore = Left ( possiblevalues ; _c );
+
+	//this is array value number, or a 0
+	_currentvalue = Max ( PatternCount ( _allbefore ; "¶" ) + 1 ; 0 ) ; 
+
+	_maxnum = ValueCount ( possiblevalues ) ;
+
+	_newvaluenum =  
+			Case (  	
+					// no possible values
+					_maxnum < 1 ; "" ;
+
+					// add 1 to current index
+					If ( _currentvalue ≥ _maxnum ; 1 ; _currentvalue + 1 )
+			)
+
+	] ;
+
+	GetValue ( possiblevalues ; _newvaluenum ) 
+
+)

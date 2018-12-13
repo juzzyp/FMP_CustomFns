@@ -1,0 +1,7 @@
+# Title   cf_SQLTableName
+# Parms   fullFieldName
+#
+# Notes   Used when constructing ExecuteSQL calls in order to pass the FIELD names
+
+
+Quote ( GetValue ( Substitute ( GetFieldName ( fullFieldName ) ; "::" ; "¶" ) ; 2 ) )

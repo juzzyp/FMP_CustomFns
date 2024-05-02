@@ -1,0 +1,37 @@
+/*_DayCounterHolidays ( Date_Start ; Date_End; Days_of_Week ; Holidays )
+
+Modified by Tyler Tullock to respect list of holidays
+
+Author
+Joshua Morton - JEM Consulting
+
+Parameters
+Date_Start - any calendar date;
+Date_End - any calendar date;
+Days_of_Week - a list of days of week (as numbers), separated by carriage returns (1=Sunday, 7 = Saturday);
+Holidays - a list of dates that should NOT be counted.
+
+Data type returned
+number
+Description
+Returns a number counting only those days in the specified range whose day-of-week is included in the weekDays parameter and whose date does NOT exist in a list called Holidays.
+
+Thanks to Michael Horak, *COMMENT Visual Realisation for their inspiration
+
+January, 11, 2011
+
+*/
+
+
+Case ( 
+Date_Start and not IsEmpty ( FilterValues ( DayOfWeek ( Date_Start ) ; Days_of_Week ) ) and  IsEmpty (FilterValues (Date_Start ; Holidays)) ; 
+
+1 )
+
+ + 
+
+Case ( 
+Date_Start < Date_End ; 
+cf_DayCounterHolidays ( Date_Start + 1 ; Date_End ; Days_of_Week ; Holidays )
+
+)
